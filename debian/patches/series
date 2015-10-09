@@ -1,0 +1,16 @@
+0001-Change-guile-to-guile-X.Y-for-info-pages.patch
+0002-Mark-mutex-with-owner-not-retained-threads-test-as-u.patch
+0003-Recognize-more-ARM-targets.patch
+0004-Recognize-m68k-s390x-and-sh4-as-compilation-targets.patch
+0005-Do-not-assume-that-64-bit-integers-will-be-64-bit-al.patch
+0006-VM-Use-register-a3-for-IP_REG-on-m68k.patch
+0007-build-Use-libtoolize-in-autogen.sh.patch
+0008-VM-ASM_MUL-for-ARM-Add-earlyclobber-constraint-to-th.patch
+0009-VM-Allow-the-C-compiler-to-choose-FP_REG-on-ARM.patch
+0010-web-Keep-the-default-size-for-the-client-s-in-kernel.patch
+0011-Fix-shrinking-of-contiguous-bytevectors-as-from-get-.patch
+0012-Fix-bit-count-bug.patch
+0013-Handle-p-in-format-warnings.patch
+0014-Document-prefix-option-in-use-module-clauses.patch
+0015-Fix-SCM_SMOB_OBJECT-_-_0_-_1_-_2_-_3_-LOC.patch
+0016-peval-Handle-optional-argument-inits-that-refer-to-p.patch

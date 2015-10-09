@@ -1,0 +1,30 @@
+From 40cd8016a3d3b16f5a46b43eaf93b39ebd1802e7 Mon Sep 17 00:00:00 2001
+From: Mark H Weaver <mhw@netris.org>
+Date: Sat, 20 Sep 2014 04:05:43 -0400
+Subject: VM: Use register "a3" for IP_REG on m68k.
+
+Subset of a patch by Andreas Schwab <schwab@linux-m68k.org>.
+Reported by Rob Browning <rlb@defaultvalue.org>.
+
+* libguile/vm-engine.h (IP_REG)[__mc68000__]: Use register "a3".
+
+Origin: http://git.savannah.gnu.org/cgit/guile.git/commit/?id=97c520fd3ff5ae0305b6d236e0bc31f794a6cce6
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=649718
+Added-by: Rob Browning <rlb@defaultvalue.org>
+---
+ libguile/vm-engine.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libguile/vm-engine.h b/libguile/vm-engine.h
+index 46d4cff..28cab40 100644
+--- a/libguile/vm-engine.h
++++ b/libguile/vm-engine.h
+@@ -74,7 +74,7 @@
+ #define FP_REG asm("%r16")
+ #endif
+ #ifdef __mc68000__
+-#define IP_REG asm("a5")
++#define IP_REG asm("a3")
+ #define SP_REG asm("a4")
+ #define FP_REG
+ #endif

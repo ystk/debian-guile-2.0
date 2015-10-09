@@ -1,0 +1,34 @@
+From 59193a8073831b6b896eedb3e3dc5333ad0341ff Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ludovic=20Court=C3=A8s?= <ludo@gnu.org>
+Date: Sat, 20 Sep 2014 14:36:09 +0200
+Subject: build: Use 'libtoolize' in autogen.sh.
+
+Fixes <http://bugs.gnu.org/18470>.
+Reported by Rob Browning <rlb@defaultvalue.org>.
+
+* autogen.sh: Invoke 'libtoolize' instead of 'libtool'.
+
+Origin: http://git.savannah.gnu.org/cgit/guile.git/commit/?id=76a8db27c65b59879a8c27363f374035b233d6b7
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=761408
+Added-by: Rob Browning <rlb@defaultvalue.org>
+---
+ autogen.sh | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/autogen.sh b/autogen.sh
+index 5187cd4..af1ade60 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -15,11 +15,7 @@ autoconf --version
+ echo ""
+ automake --version
+ echo ""
+-if test "`uname -s`" = Darwin; then
+-  glibtool --version
+-else
+-  libtool --version
+-fi
++libtoolize --version
+ echo ""
+ ${M4:-m4} --version
+ echo ""

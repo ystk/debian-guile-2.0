@@ -1,0 +1,59 @@
+From 10b60a8a12991c10b25377889f6f42d6c2d9dbdf Mon Sep 17 00:00:00 2001
+From: Andy Wingo <wingo@pobox.com>
+Date: Sat, 28 Jun 2014 15:24:29 +0200
+Subject: Fix bit-count* bug
+
+* libguile/bitvectors.c (scm_bit_count_star): Fix typo introduced in
+  2005 refactor (!) in which the second arg was erroneously taken from
+  the first arg.
+
+* test-suite/tests/bitvectors.test: Add test.
+
+* doc/ref/api-compound.texi: Fix doc example for u32vector selector.
+
+Origin: http://git.savannah.gnu.org/cgit/guile.git/commit/?id=d40752513fff3306bed31e40721e627720b2f8ff
+Added-by: Rob Browning <rlb@defaultvalue.org>
+---
+ doc/ref/api-compound.texi        | 2 +-
+ libguile/bitvectors.c            | 2 +-
+ test-suite/tests/bitvectors.test | 4 ++++
+ 3 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/doc/ref/api-compound.texi b/doc/ref/api-compound.texi
+index 055de99..8ec32d6 100644
+--- a/doc/ref/api-compound.texi
++++ b/doc/ref/api-compound.texi
+@@ -1142,7 +1142,7 @@ For example,
+ 
+ @example
+ (bit-count* #*01110111 #*11001101 #t) @result{} 3
+-(bit-count* #*01110111 #u(7 0 4) #f)  @result{} 2
++(bit-count* #*01110111 #u32(7 0 4) #f)  @result{} 2
+ @end example
+ @end deffn
+ 
+diff --git a/libguile/bitvectors.c b/libguile/bitvectors.c
+index 0158490..af2e947 100644
+--- a/libguile/bitvectors.c
++++ b/libguile/bitvectors.c
+@@ -713,7 +713,7 @@ SCM_DEFINE (scm_bit_count_star, "bit-count*", 3, 0, 0,
+       ssize_t kv_inc;
+       const scm_t_uint32 *kv_bits;
+       
+-      kv_bits = scm_bitvector_elements (v, &kv_handle,
++      kv_bits = scm_bitvector_elements (kv, &kv_handle,
+ 					&kv_off, &kv_len, &kv_inc);
+ 
+       if (v_len != kv_len)
+diff --git a/test-suite/tests/bitvectors.test b/test-suite/tests/bitvectors.test
+index 8541576..d9dfa13 100644
+--- a/test-suite/tests/bitvectors.test
++++ b/test-suite/tests/bitvectors.test
+@@ -70,3 +70,7 @@
+     (let ((v (bitvector #t #t #f #f)))
+       (bit-set*! v #*101 #f)
+       (equal? v #*0100))))
++
++(with-test-prefix "bit-count*"
++  (pass-if-equal 3 (bit-count* #*01110111 #*11001101 #t))
++  (pass-if-equal 2 (bit-count* #*01110111 #u32(7 0 4) #f)))
