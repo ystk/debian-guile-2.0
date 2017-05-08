@@ -14,3 +14,5 @@
 0014-Document-prefix-option-in-use-module-clauses.patch
 0015-Fix-SCM_SMOB_OBJECT-_-_0_-_1_-_2_-_3_-LOC.patch
 0016-peval-Handle-optional-argument-inits-that-refer-to-p.patch
+0017-REPL-Server-Guard-against-HTTP-inter-protocol-exploi.patch
+0018-Remove-umask-calls-from-mkdir.patch

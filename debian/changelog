@@ -1,3 +1,19 @@
+guile-2.0 (2.0.11+1-9+deb8u1) jessie; urgency=high
+
+  * Fix REPL server vulnerability (CVE-2016-8606).  Add
+    0017-REPL-Server-Guard-against-HTTP-inter-protocol-exploi.patch to
+    incorporate the fix.  See that file for further information.
+    (Closes: 840555)
+
+  * Fix mkdir umask-related vulnerability (CVE-2016-8605).  Previously,
+    whenever the second argument to mkdir was omitted, it would
+    temporarily change the umask to 0, a change which would also affect
+    any concurrent threads.  Add
+    0018-Remove-umask-calls-from-mkdir.patch to incorporate the fix.
+    See that file for further information. (Closes: 840556)
+
+ -- Rob Browning <rlb@defaultvalue.org>  Sat, 22 Oct 2016 11:36:24 -0500
+
 guile-2.0 (2.0.11+1-9) unstable; urgency=medium
 
   * Always use "gcc" in guile-snarf.  Avoid the gcc-4.8 CC override that
